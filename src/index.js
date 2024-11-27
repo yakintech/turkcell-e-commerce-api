@@ -4,6 +4,7 @@ const PORT = process.env.PORT || 3001;
 const cookieParser = require('cookie-parser');
 const cors = require('cors');
 const authController = require('./controllers/auhtController');
+const authMiddleware = require('./middleware/authMiddleware');
 
 app.use(express.json());
 app.use(cookieParser());
@@ -14,7 +15,7 @@ app.use(cors({
 
 app.post('/login', authController.login);
 
-
+app.get("/check", authMiddleware, authController.check)
 
 
 app.listen(PORT, () => {

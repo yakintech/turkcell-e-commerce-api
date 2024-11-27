@@ -17,6 +17,9 @@ const authController = {
         else {
             res.status(401).json({ message: 'Invalid email or password' });
         }
+    },
+    check: async (req, res) => {
+       return res.json({ message: 'You are logged in' });
     }
 }
 
