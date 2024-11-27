@@ -18,6 +18,7 @@ app.post('/login', authController.login);
 app.get("/check", authMiddleware, authController.check)
 
 app.get("/api/products", authMiddleware, productController.getAll)
+app.delete("/api/products/:id", authMiddleware, productController.remove)
 
 app.listen(PORT, () => {
     console.log(`Server is running on port ${PORT}`);
