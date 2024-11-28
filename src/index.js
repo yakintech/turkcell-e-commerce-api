@@ -21,7 +21,7 @@ connectDB()
 app.post('/login', authController.login);
 app.get("/check", authMiddleware, authController.check)
 
-app.get("/api/products", authMiddleware, productController.getAll)
+app.get("/api/products", productController.getAll)
 app.post("/api/products", authMiddleware, productController.add)
 app.delete("/api/products/:id", authMiddleware, productController.remove)
 
