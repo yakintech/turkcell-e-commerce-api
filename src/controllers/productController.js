@@ -9,11 +9,12 @@ const productController = {
     remove: async (req, res) => {
         const { id } = req.params;
         
+        const product = await Product.findByIdAndDelete(id);
         if (!product) {
             return res.status(404).json({ message: "Product not found" });
         }
 
-        await Product.findByIdAndDelete(id);
+        
         return res.json({ message: "Product removed" });
     },
     add: async (req, res) => {
