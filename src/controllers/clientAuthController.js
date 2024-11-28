@@ -19,7 +19,7 @@ const clientAuthController = {
         }
     },
     check: async (req, res) => {
-        return res.json({ message: 'You are logged in' });
+        return res.json({ email: "user@mail.com", id: 1 });
     },
     logout: async (req, res) => {
         res.clearCookie('clienttoken');
