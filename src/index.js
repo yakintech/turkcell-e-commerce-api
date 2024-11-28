@@ -8,6 +8,8 @@ const authController = require('./controllers/auhtController');
 const authMiddleware = require('./middleware/authMiddleware');
 const productController = require('./controllers/productController');
 const connectDB = require('./config/db');
+const clientAuthController = require('./controllers/clientAuthController');
+const clientAuthMiddleware = require('./middleware/clientAuthMiddleware');
 
 app.use(express.json());
 app.use(cookieParser());
@@ -20,6 +22,13 @@ app.use(cors({
 connectDB()
 app.post('/login', authController.login);
 app.get("/check", authMiddleware, authController.check)
+app.post("/logout", authController.logout)
+
+
+app.post('/client/login', clientAuthController.login);
+app.get("/client/check", clientAuthMiddleware, clientAuthController.check)
+app.post("/client/logout", clientAuthController.logout)
+
 
 app.get("/api/products", productController.getAll)
 app.post("/api/products", authMiddleware, productController.add)

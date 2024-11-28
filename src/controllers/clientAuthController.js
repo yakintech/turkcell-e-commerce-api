@@ -2,29 +2,29 @@ const jwt = require('jsonwebtoken');
 
 
 
-const authController = {
+const clientAuthController = {
     login: async (req, res) => {
         const { email, password } = req.body;
-        if (email === 'admin@mail.com' && password === '123') {
-            const token = jwt.sign({ email }, 'jwtSecret');
+        if (email === 'user@mail.com' && password === '123') {
+            const token = jwt.sign({ email }, 'clientJwtSecret');
 
-            res.cookie('token', token, {
+            res.cookie('clienttoken', token, {
                 httpOnly: true,
             });
 
-            return res.json({ message: 'Login successful' });
+            return res.json({ id: 1, email: "user@mail.com" });
         }
         else {
             res.status(401).json({ message: 'Invalid email or password' });
         }
     },
     check: async (req, res) => {
-       return res.json({ message: 'You are logged in' });
+        return res.json({ message: 'You are logged in' });
     },
     logout: async (req, res) => {
-        res.clearCookie('token');
+        res.clearCookie('clienttoken');
         return res.json({ message: 'Logged out' });
     }
 }
 
-module.exports = authController;
+module.exports = clientAuthController;
