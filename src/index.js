@@ -14,7 +14,7 @@ const clientAuthMiddleware = require('./middleware/clientAuthMiddleware');
 app.use(express.json());
 app.use(cookieParser());
 app.use(cors({
-    origin: 'http://localhost:3000',
+    origin: 'https://hammerhead-app-psjfp.ondigitalocean.app',
     credentials: true,
 }));
 
